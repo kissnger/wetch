@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公众号排版太痛苦？用 Markdown 写，一键转 HTML 的终极方案</title>
+<meta name="description" content="公众号编辑器不支持 flex/gradient/rgba/class，每次排版都要手写 table 标签。这篇教你用 Markdown 写内容，wetch 一键出兼容 HTML，5 种主题任选。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #333; line-height: 1.8; background: #f8f9fa; }
+  .container { max-width: 700px; margin: 0 auto; padding: 40px 20px; background: #fff; }
+  h1 { font-size: 28px; margin-bottom: 12px; color: #1a1a1e; }
+  .meta { font-size: 14px; color: #999; margin-bottom: 32px; }
+  h2 { font-size: 20px; color: #cc3333; margin: 32px 0 16px; }
+  p { margin-bottom: 16px; }
+  pre { background: #1c1c1e; border-radius: 8px; padding: 16px; overflow-x: auto; color: #e4e4e4; font-size: 14px; line-height: 1.5; margin: 16px 0; font-family: Menlo, monospace; }
+  .comment { color: #6a9955; }
+  code { font-family: Menlo, monospace; font-size: 14px; background: #f3f3f3; padding: 2px 6px; border-radius: 3px; }
+  .cta { background: #2d0a0a; border-radius: 12px; padding: 32px; color: white; text-align: center; margin: 40px 0; }
+  .cta h3 { font-size: 20px; margin-bottom: 8px; }
+  .cta p { color: rgba(255,255,255,0.7); font-size: 14px; }
+  .cta .btn { display: inline-block; margin-top: 16px; padding: 12px 32px; background: #cc3333; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+  img { max-width: 100%; border-radius: 8px; }
+  .footer { text-align: center; padding: 24px; font-size: 13px; color: #999; }
+  blockquote { border-left: 4px solid #cc3333; padding: 12px 16px; background: #fdf0f0; margin: 16px 0; border-radius: 4px; font-size: 14px; color: #666; }
+  .theme-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0; }
+  .theme-item { text-align: center; padding: 12px 4px; background: #f8f9fa; border-radius: 6px; font-size: 13px; }
+  .theme-dot { width: 16px; height: 16px; border-radius: 50%; margin: 0 auto 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>公众号排版太痛苦？我写了个工具，用 Markdown 一键转兼容 HTML</h1>
+<div class="meta">发表于 2026.05.30 · #工具 #公众号 #开源</div>
+
+<p>如果你做过公众号，一定经历过以下场景：</p>
+
+<p>写好一篇稿子，复制到公众号编辑器里——<br>
+标题字号要调、引用要加底色、列表要对齐、代码块要自带宽高……<br>
+折腾半小时，终于排好了，一预览，手机端全乱了。</p>
+
+<p>公众号编辑器不支持 flex、gradient、rgba、class 选择器。排版只能靠 table + 内联 style 手写。每个常用的样式的都要重新配一遍色号、边距、字号。</p>
+
+<p>作为一个程序员，我忍了这件事很久——直到我决定写一个工具来解决它。</p>
+
+<h2>wetch：Markdown → 公众号 HTML</h2>
+
+<p><strong>wetch</strong> 是一个纯 Python 的命令行工具。你写 Markdown，它帮你生成直接可用的公众号 HTML。</p>
+
+<pre><span class="comment"># 安装</span>
+pip install wetch
+
+<span class="comment"># 转换</span>
+wetch article.md -o output.html</pre>
+
+<p>就这么简单。output.html 可以直接打开复制，粘贴到公众号编辑器。</p>
+
+<h2>支持什么功能？</h2>
+
+<p><strong>标准 Markdown 语法都支持：</strong></p>
+
+<p>标题（<code>##</code>）、副标题（<code>###</code>）、小节（<code>####</code>）、加粗（<code>**</code>）、引用（<code>&gt;</code>）、列表（<code>-</code>）、代码块（<code>```</code>）、分隔线（<code>---</code>）。</p>
+
+<p><strong>额外支持：</strong></p>
+<p>日期、标签、作者元信息；封面文字自定义；5 种主题配色。</p>
+
+<h2>5 种主题配色</h2>
+
+<div class="theme-grid">
+  <div class="theme-item">
+    <div class="theme-dot" style="background:#cc3333"></div>
+    极简红<br>default
+  </div>
+  <div class="theme-item">
+    <div class="theme-dot" style="background:#4a6cf7"></div>
+    科技蓝<br>blue
+  </div>
+  <div class="theme-item">
+    <div class="theme-dot" style="background:#2d8a57"></div>
+    自然绿<br>green
+  </div>
+  <div class="theme-item">
+    <div class="theme-dot" style="background:#7c3aed"></div>
+    典雅紫<br>purple
+  </div>
+  <div class="theme-item">
+    <div class="theme-dot" style="background:#636366"></div>
+    极简灰<br>minimal
+  </div>
+</div>
+
+<p>切换主题只需要加一个参数：</p>
+<pre>wetch article.md --theme blue -o output.html</pre>
+
+<h2>封面图也帮你搞定</h2>
+
+<p>公众号文章需要封面图。wetch 的 <code>--cover</code> 参数可以生成封面 HTML：</p>
+
+<pre><span class="comment"># 生成封面 HTML</span>
+wetch article.md --cover -o cover.html
+
+<span class="comment"># 用 Playwright 截图为 PNG</span>
+npx playwright screenshot \
+  --viewport-size=1200,675 cover.html cover.png</pre>
+
+<p>封面风格匹配你选的主题——深色渐变背景 + 网格底纹 + 装饰圈 + 标题和副标题布局。专业感在线，不用再找设计师了。</p>
+
+<h2>实际的输入输出对比</h2>
+
+<p><strong>Markdown 输入（demo-article.md）：</strong></p>
+
+<pre>## 你的 AI Agent 正在替你花钱
+
+### Robinhood 和 Meow 这周都在做同一件事
+
+date: 2026.05.30
+tags: AI安全, AgenticFinance
+author: wetch 用户
+
+我问你一个问题。
+
+如果你的 AI Agent 被黑客控制了，它能花掉你多少钱？
+
+**44% 的电商企业已经在接入 Agentic Commerce**
+
+&gt; "AI Agent 正在创造企业安全史上最大的攻击面。"</pre>
+
+<p><strong>输出的 HTML 直接打开，就能看到格式完整的公众号文章。</strong>包含题头卡片、引用块、强调块、标签、底部来源——所有公众号编辑器做起来费劲的东西，都有了。</p>
+
+<h2>和其他方案比有什么优势？</h2>
+
+<blockquote>
+  <strong>在线编辑器（如 135、秀米）</strong>：功能强但要手动操作，没法走自动化流程。模板多了反而选择困难。<br><br>
+  <strong>Markdown → 微信的在线工具</strong>：大多需要上传到第三方平台，有隐私风险。样式选项单一。<br><br>
+  <strong>wetch</strong>：纯本地运行，零隐私泄露。可脚本化、可 CI/CD、可团队共享标准模板。开源，MIT 许可。
+</blockquote>
+
+<h2>谁适合用</h2>
+
+<p>✅ 技术团队的技术博客运营——码农写 Markdown 就是舒适区<br>
+✅ 个人号主想节约排版时间<br>
+✅ 需要统一多篇文章排版风格的内容团队<br>
+✅ 想把自动化流程跑起来的内容中台</p>
+
+<h2>写在最后</h2>
+
+<p>这个工具我写了几天，解决了自己最大的一个痛点。</p>
+
+<p>如果你也做公众号，试试看。<a href="https://github.com/kissnger/wetch" style="color:#cc3333;">GitHub 仓库在这里</a>，下载提 issue 都行。</p>
+
+<p>如果 wetch 帮到了你——致谢不用全篇，扫个码请喝咖啡就行 ☕</p>
+
+<div class="cta">
+  <h3>wetch — WeChat Article Formatter</h3>
+  <p>Markdown → 公众号兼容 HTML · 一键搞定</p>
+  <a class="btn" href="https://github.com/kissnger/wetch">GitHub 仓库 →</a>
+  <a class="btn" href="https://kissnger.github.io/wetch/" style="background:#555; margin-left:8px;">在线页面 →</a>
+</div>
+
+<p style="text-align:center;font-size:13px;color:#999;margin-top:40px;">
+  项目地址：<a href="https://github.com/kissnger/wetch" style="color:#cc3333;">github.com/kissnger/wetch</a>
+</p>
+
+</div>
+</body>
+</html>
