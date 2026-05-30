@@ -84,8 +84,13 @@ npx playwright screenshot --viewport-size=1200,675 cover.html cover.png
 
 如果 wetch 帮到了你，欢迎请作者喝杯咖啡 ☕
 
+<p align="center">
+  <img src="assets/alipay-qr.jpg" width="200" alt="支付宝收款码">
+  <br>
+  <strong>支付宝扫一扫，随意打赏</strong>
+</p>
+
 - **GitHub Sponsors**: [github.com/sponsors/kissnger](https://github.com/sponsors/kissnger)
-- **支付宝 / 微信**: 见项目主页
 
 ## 📄 许可
 
