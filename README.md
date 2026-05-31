@@ -15,8 +15,12 @@
 ## 🚀 快速开始
 
 ```bash
-# 安装
-pip install wetch
+# 从 GitHub Release 安装（推荐，无需 PyPI）
+pip install https://github.com/kissnger/wetch/releases/download/v1.0.0/wetch-1.0.0-py3-none-any.whl
+
+# 或者从源码安装
+git clone https://github.com/kissnger/wetch.git
+cd wetch && pip install .
 
 # 转换文章
 wetch article.md -o output.html
